@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface GoodsRepository extends JpaRepository<GoodsEntity, Integer> {
-    List<GoodsEntity> findAllByNameContainsIgnoreCaseOrderByPriceDesc(String name);
+
+    List<GoodsEntity> findAll();
     Optional<GoodsEntity> getById(int id);
 
     List<GoodsEntity> getByName(String name);

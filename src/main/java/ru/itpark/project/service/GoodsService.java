@@ -6,12 +6,16 @@ import ru.itpark.project.entity.GoodsEntity;
 import ru.itpark.project.exception.ProductNotFoundException;
 import ru.itpark.project.repository.GoodsRepository;
 
+import java.util.List;
+
 @Service
 public class GoodsService {
     private final GoodsRepository repository;
 
     public GoodsService(GoodsRepository repository) {
         this.repository = repository;
+    }   public List<GoodsEntity> getAll() {
+            return repository.findAll();
     }
     public GoodsEntity getById(int id){
         return repository.getById(id).orElseThrow(ProductNotFoundException::new);

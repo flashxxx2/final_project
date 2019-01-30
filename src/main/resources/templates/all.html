@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form action="http://localhost:8080/search" method="get">
+    <input name="name">
+    <button>search</button>
+</form>
+
+
+<ul>
+    <li data-th-each="item : ${items}">
+        <a data-th-href="@{/{id}(id=${item.id})}">
+            [[${item.name}]]
+        </a>
+    </li>
+</ul>
+<a data-th-href="@{/0/edit}">Add</a>
+ <!--<img data-th-src="@{/media/{path}(path=${item.path})}">-->
+
+<button id="start">Взять в аренду</button>
+<p id="timer"></p>
+
+
+
+<!--<script>-->
+    <!--let elementButton = document.querySelector('#start');-->
+    <!--let elementTimer = document.querySelector('#timer');-->
+    <!--let seconds = 100;-->
+    <!--elementButton.addEventListener('click', (evt) => {-->
+        <!--evt.preventDefault();-->
+    <!--var timerId = setInterval(function() {-->
+        <!--console.log('sad');-->
+        <!--elementTimer.textContent = seconds&#45;&#45;;-->
+    <!--}, 1000);-->
+    <!--})-->
+<!--</script>-->
+</body>
+</html>

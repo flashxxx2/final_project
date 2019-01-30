@@ -13,12 +13,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class GoodsEntity {
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "describe")
     private String describe;
     @Column(name = "price")
     private int price;
+    @Column(name = "image_url")
+    private String imageUrl;
 }
