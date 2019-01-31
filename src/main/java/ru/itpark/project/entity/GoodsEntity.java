@@ -20,7 +20,7 @@ public class GoodsEntity {
     @Column(name = "describe")
     private String describe;
     @Column(name = "price")
-    private int price;
+    private Integer price;
     @Column(name = "image_url")
     private String imageUrl;
 }

@@ -26,4 +26,8 @@ public class GoodsService {
     public void removeById(int id){
         repository.removeById(id);
     }
+
+    public List<GoodsEntity> findByName(String name) {
+        return repository.findAllByNameContainsIgnoreCaseOrderByPriceDesc(name);
+    }
 }

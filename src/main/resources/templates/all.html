@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,12 +8,19 @@
     <title>Document</title>
 </head>
 <body>
+
+<h1 style="background-color:azure"> Аренда самокатов и велосипедов </h1>
+
+
+
+
+
 <form action="http://localhost:8080/search" method="get">
     <input name="name">
     <button>search</button>
 </form>
 
-
+Велосипеды и самокаты, которые вы можете арендовать!
 <ul>
     <li data-th-each="item : ${items}">
         <a data-th-href="@{/{id}(id=${item.id})}">
@@ -21,10 +28,8 @@
         </a>
     </li>
 </ul>
-<a data-th-href="@{/0/edit}">Add</a>
+<!--<a data-th-href="@{/0/edit}">Add</a>-->
  <!--<img data-th-src="@{/media/{path}(path=${item.path})}">-->
-
-<button id="start">Взять в аренду</button>
 <p id="timer"></p>
 
 

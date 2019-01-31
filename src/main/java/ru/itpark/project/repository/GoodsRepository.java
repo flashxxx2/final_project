@@ -10,9 +10,11 @@ import java.util.Optional;
 public interface GoodsRepository extends JpaRepository<GoodsEntity, Integer> {
 
     List<GoodsEntity> findAll();
+
     Optional<GoodsEntity> getById(int id);
 
     List<GoodsEntity> getByName(String name);
+    List<GoodsEntity> findAllByNameContainsIgnoreCaseOrderByPriceDesc(String name);
 
     void save(GoodsDto item);
 
