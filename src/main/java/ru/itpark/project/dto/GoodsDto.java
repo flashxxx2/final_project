@@ -13,5 +13,6 @@ public class GoodsDto {
     private String describe;
     private int price;
     private String imageUrl;
+    private Integer number;
 
 }
