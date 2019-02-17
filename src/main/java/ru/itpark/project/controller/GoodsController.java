@@ -9,8 +9,6 @@ import ru.itpark.project.entity.GoodsEntity;
 import ru.itpark.project.entity.GoodsType;
 import ru.itpark.project.entity.RentEntity;
 import ru.itpark.project.service.GoodsService;
-import ru.itpark.project.util.RentUtil;
-
 import java.time.LocalDateTime;
 
 import static ru.itpark.project.util.RentUtil.calculateRentEndTime;
