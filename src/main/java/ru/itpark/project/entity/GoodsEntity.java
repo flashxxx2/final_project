@@ -25,9 +25,6 @@ public class GoodsEntity {
     @Column(name = "price")
     private Long price;
 
-//    @Column(name = "image_url")
-//    private String imageUrl;
-
     @Column(name = "goods_type")
     @Enumerated(EnumType.STRING)
     private GoodsType goodstype;

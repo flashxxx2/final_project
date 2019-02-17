@@ -10,8 +10,6 @@ import ru.itpark.project.entity.GoodsType;
 import ru.itpark.project.entity.RentEntity;
 import ru.itpark.project.service.GoodsService;
 import java.time.LocalDateTime;
-
-import static ru.itpark.project.util.RentUtil.calculateRentEndTime;
 import static ru.itpark.project.util.RentUtil.localDateTimeToString;
 
 @Controller
@@ -54,27 +52,6 @@ public class GoodsController {
         }
         throw new IllegalArgumentException("Unknown type");
     }
-
-    //    @GetMapping(value = "/searchTime", params = "time") // Mapping - определяет то, что должно быть в запросе
-//    public String searchTime(@RequestParam Integer time, Model model) {
-//        model.addAttribute("item", time); // чтобы отображать в поле поиска
-//        //model.addAttribute("items", service.findTimeRent(time));
-//        return "edit";
-    //}
-//    @PostMapping("/rent")
-    public String deadLineAndCalculateCost(@ModelAttribute RentDto rentDto, Model model) {
-        Long time = rentDto.getTime();
-        LocalDateTime localDateTime = calculateRentEndTime(time);
-        String stringTime = localDateTimeToString(localDateTime);
-        model.addAttribute("time", stringTime);
-        Integer goodsId = rentDto.getGoodsId();
-        GoodsEntity goodsEntity = service.getById(goodsId);
-        double cost = goodsEntity.getPrice() * time / 60d;
-        model.addAttribute("cost", cost);
-        return "rent";
-        //return "redirect:/" + rentDto.getGoodsId();
-    }
-
     @PostMapping("/rent")
     public String doRent(@ModelAttribute RentDto rentDto) {
         RentEntity rentEntity = service.save(rentDto);
@@ -95,22 +72,8 @@ public class GoodsController {
         model.addAttribute("cost", cost);
         return "rent";
 
-//    }
-//
-//    @PreAuthorize("hasAuthority('REMOVE')")
-//    @PostMapping("/{id}/remove")
-//    public String remove(@PathVariable int id) {
-//        service.removeById(id);
-//
-//        return "redirect:/notes";
-//    }
-//
-//    @PreAuthorize("@accountService.isOwned(#id)") // #id -> @PathVariable int id
-//    @GetMapping("/{id}/owned")
-//    public String preAuthorizeWithOurService(@PathVariable int id) {
-//        return "pages/owned";
-//    }
-}}
+    }
+}
 
 
 
