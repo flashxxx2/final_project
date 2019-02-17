@@ -5,8 +5,6 @@ import ru.itpark.project.entity.RentEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-
 public interface RentRepository extends JpaRepository<RentEntity, Integer> {
 
 
