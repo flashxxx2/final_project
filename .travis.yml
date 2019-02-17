@@ -7,3 +7,5 @@ deploy:
   provider: heroku
   api_key: $HEROKU_KEY
   app: spring-fi
+  before_install:
+    - chmod + x mvnw
