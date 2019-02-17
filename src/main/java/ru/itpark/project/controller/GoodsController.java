@@ -30,8 +30,7 @@ public class GoodsController {
     public String getById(@PathVariable Integer id, Model model) {
         GoodsEntity goods = service.getById(id);
         model.addAttribute("goods", goods);
-        // model.addAttribute("time", );
-        return "edit";
+       return "edit";
     }
 
     @GetMapping(value = "/search", params = "name") // Mapping - определяет то, что должно быть в запросе
