@@ -28,6 +28,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -58,5 +59,14 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>corp1</id>
+            <name>Corporate Repository</name>
+            <url>file:///home/myfolder/.m2</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
 
 </project>
