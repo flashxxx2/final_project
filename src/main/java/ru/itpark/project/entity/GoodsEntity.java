@@ -15,16 +15,23 @@ public class GoodsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "describe")
     private String describe;
+
     @Column(name = "price")
-    private Integer price;
-    @Column(name = "image_url")
-    private String imageUrl;
+    private Long price;
+
+//    @Column(name = "image_url")
+//    private String imageUrl;
+
     @Column(name = "goods_type")
     @Enumerated(EnumType.STRING)
     private GoodsType goodstype;
+
+    private String path;
 
 }

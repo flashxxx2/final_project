@@ -1,7 +1,6 @@
 package ru.itpark.project.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.itpark.project.dto.GoodsDto;
 import ru.itpark.project.entity.GoodsEntity;
 import ru.itpark.project.entity.GoodsType;
 
@@ -14,11 +13,12 @@ public interface GoodsRepository extends JpaRepository<GoodsEntity, Integer> {
 
     Optional<GoodsEntity> getById(int id);
 
-    List<GoodsEntity> getByName(String name);
-
     List<GoodsEntity> findAllByNameContainsIgnoreCaseOrderByPriceDesc(String name);
+    void removeById(int id);
 
-      void removeById(int id);
+    List<GoodsEntity> findAllByGoodstype(GoodsType goodsType);
 
-      List<GoodsEntity> findAllByGoodstype(GoodsType goodsType);
+
+
+
 }

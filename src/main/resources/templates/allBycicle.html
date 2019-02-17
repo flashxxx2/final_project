@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-Дратути велики
+<h1 align="center" style="background-color:dimgrey"> Велосипеды доступные для аренды </h1>
 <ul>
     <li data-th-each="item : ${items}">
         <a data-th-href="@{/{id}(id=${item.id})}">
@@ -16,5 +16,7 @@
         </a>
     </li>
 </ul>
+<a href="/">На главную</a>
+
 </body>
 </html>

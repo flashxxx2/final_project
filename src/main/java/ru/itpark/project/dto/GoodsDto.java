@@ -12,7 +12,5 @@ public class GoodsDto {
     private String name;
     private String describe;
     private int price;
-    private String imageUrl;
-    private Integer number;
 
 }

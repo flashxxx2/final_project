@@ -9,9 +9,19 @@
 </head>
 <body>
 
-<img height="200" width="200" th:src="${item.imageUrl}">
-[[${item.describe}]]
+<p data-th-if="${goods.id != 0}">
+<img data-th-src="@{/media/{path}(path=${goods.path})}">
+<h2>[[${goods.describe}]]</h2>
+<form data-th-action="@{/rent}" method="post">
 
-<button id="start">Взять в аренду</button>
+    <input name="time">
+    <input name="goodsId" data-th-value="${goods.id}" hidden   >
+
+    <p>Укажите время аренды</p>
+    <button >Взять в аренду</button>
+</form>
+<a href="/">На главную</a>
+
+
 </body>
 </html>

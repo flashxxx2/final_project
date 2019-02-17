@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,14 +8,15 @@
     <title>Document</title>
 </head>
 <body>
+<h1>Вам нужно сдать инвентарь в [[${time}]]</h1>
+<p></p>
+<h1>Вам нужно заплатить [[${cost}]] рублей</h1>
 
-Велосипеды и самокаты, которые вы можете арендовать!
-<ul>
-    <li data-th-each="item : ${items}">
-        <a data-th-href="@{/{id}(id=${item.id})}">
-            [[${item.name}]]
-        </a>
-    </li>
-</ul>
+
+<p></p>
+<p></p>
+
+
+<a href="/">На главную</a>
 </body>
 </html>
