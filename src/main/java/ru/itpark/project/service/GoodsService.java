@@ -28,10 +28,10 @@ public class GoodsService {
 
     @Autowired
     public GoodsService(GoodsRepository goodsRepository, RentRepository rentRepository,
-                        @Value("${spring.resources.static-locations}") String uploadPath) {
+                        @Value("file:///C:/Users/Rig-1/IdeaProjects/project/files") String uploadPath) {
         this.goodsRepository = goodsRepository;
         this.rentRepository = rentRepository;
-        this.uploadPath = Path.of(URI.create(uploadPath)).resolve("file:///C:/Users/Rig-1/IdeaProjects/project/files");
+        this.uploadPath = Path.of(URI.create(uploadPath)).resolve("media");
     }
         public List<GoodsEntity> getAll() {
         return goodsRepository.findAll();
