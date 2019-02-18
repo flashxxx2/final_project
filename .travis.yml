@@ -4,7 +4,7 @@ script: ./mvnw -e verify
 deploy:
   provider: heroku
   api_key: $HEROKU_KEY
-  app:  spring-final-project-itpark
+  app:  centerofrent
   # git strips the wrapper jar file so we have to force its download during the build
 install:
   - mvn -N io.takari:maven:wrapper
