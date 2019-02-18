@@ -12,7 +12,9 @@ import ru.itpark.project.repository.GoodsRepository;
 import ru.itpark.project.repository.RentRepository;
 import ru.itpark.project.util.RentUtil;
 
+import java.io.IOException;
 import java.net.URI;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,6 +32,11 @@ public class GoodsService {
         this.goodsRepository = goodsRepository;
         this.rentRepository = rentRepository;
         this.uploadPath = Path.of(URI.create(uploadPath)).resolve("media");
+        try {
+            Files.createDirectories(this.uploadPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<GoodsEntity> getAll() {
