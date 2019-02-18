@@ -22,11 +22,12 @@ import java.util.Optional;
 
 @Service
 public class GoodsService {
+    @Autowired
     private final GoodsRepository goodsRepository;
     private final RentRepository rentRepository;
     private final Path uploadPath;
 
-    @Autowired
+
     public GoodsService(GoodsRepository goodsRepository, RentRepository rentRepository,
                         @Value("file:///C:/Users/Rig-1/IdeaProjects/project/files") String uploadPath) {
         this.goodsRepository = goodsRepository;
