@@ -31,7 +31,7 @@ public class GoodsService {
                         @Value("${spring.resources.static-locations}") String uploadPath) {
         this.goodsRepository = goodsRepository;
         this.rentRepository = rentRepository;
-        this.uploadPath = Path.of(URI.create(uploadPath)).resolve("${spring.resources.static-locations}");
+        this.uploadPath = Path.of(URI.create(uploadPath)).resolve("file:///C:/Users/Rig-1/IdeaProjects/project/files");
     }
         public List<GoodsEntity> getAll() {
         return goodsRepository.findAll();
