@@ -78,8 +78,8 @@ public class GoodsService {
 
     }
 
-    public RentEntity getCurrentRent() {
-        List<RentEntity> rentEntityList = rentRepository.getByEndTimeAfter(LocalDateTime.now());
+    public RentEntity getCurrentRent(Integer goodsId) {
+        List<RentEntity> rentEntityList = rentRepository.getByEndTimeAfterAndGoodsId(LocalDateTime.now(),goodsId);
         if (rentEntityList.isEmpty())
             return null;
         return rentEntityList.get(0);

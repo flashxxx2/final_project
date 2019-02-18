@@ -8,5 +8,5 @@ import java.util.List;
 public interface RentRepository extends JpaRepository<RentEntity, Integer> {
 
 
-    List<RentEntity> getByEndTimeAfter(LocalDateTime time);
+    List<RentEntity> getByEndTimeAfterAndGoodsId(LocalDateTime time, Integer goodsId);
 }

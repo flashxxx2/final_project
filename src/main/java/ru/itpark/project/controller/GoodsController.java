@@ -54,18 +54,20 @@ public class GoodsController {
     @PostMapping("/rent")
     public String doRent(@ModelAttribute RentDto rentDto) {
         RentEntity rentEntity = service.save(rentDto);
-        return "redirect:/rent";
+        Integer id = rentEntity.getGoods().getId();
+        return "redirect:/"+id+"/rent";
     }
 
-    @GetMapping("/rent")
-    public String getCurrentRent(Model model) {
-        if (service.getCurrentRent() == null) {
+    @GetMapping("/{goodsId}/rent")
+    public String getCurrentRent(Model model,@PathVariable Integer goodsId) {
+        if (service.getCurrentRent(goodsId) == null) {
             return "rent";
         }
-        LocalDateTime localDateTime = service.getCurrentRent().getEndTime();
+        LocalDateTime localDateTime = service.getCurrentRent(goodsId).getEndTime();
         String stringTime = localDateTimeToString(localDateTime);
-        Long price = service.getCurrentRent().getGoods().getPrice();
-        Long time = service.getCurrentRent().getTime();
+        Long price = service.getCurrentRent(goodsId).getGoods().getPrice();
+        Long time = service.getCurrentRent(goodsId).getTime();
+
         Double cost = price * time / 60d;
         model.addAttribute("time", stringTime);
         model.addAttribute("cost", cost);
