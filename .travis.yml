@@ -6,9 +6,6 @@ after_success:
 deploy:
   provider: heroku
   api_key: $HEROKU_KEY
-  app: center-of-rent
-  install:
-    - mvn -N io.takari:maven:wrapper
-    - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  app: centerofrent
     after_success:
       - bash <(curl -s https://codecov.io/bash)
