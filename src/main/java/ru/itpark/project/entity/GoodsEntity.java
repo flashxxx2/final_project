@@ -19,7 +19,7 @@ public class GoodsEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "describe", length = 600)
+    @Column(name = "describe", length = 600000)
     private String describe;
 
     @Column(name = "price")
