@@ -9,16 +9,19 @@
 </head>
 <body>
 
-<p data-th-if="${goods.id != 0}">
-<img data-th-src="@{/media/{path}(path=${goods.path})}">
+<img data-th-if="${goods.id != 0}" data-th-src="@{/media/{path}(path=${goods.path})}">
 <h2>[[${goods.describe}]]</h2>
+<h2>Цена аренды инвентаря составляет [[${goods.price}]] р/час</h2>
 <form data-th-action="@{/rent}" method="post">
 
-    <input name="time">
+    <input placeholder="Время аренды" id="Укажите время аренды" name="time" class="validate" required>
+
     <input name="goodsId" data-th-value="${goods.id}" hidden   >
 
-    <p> Укажите время аренды</p>
-    <button style="color: cornflowerblue">Взять в аренду</button>
+    <p> Укажите время аренды в часах</p>
+
+
+    <button class="btn btn-outline-Взять в аренду" type="submit">Взять в аренду</button>
 </form>
 <a href="/">На главную</a>
 

@@ -29,6 +29,8 @@ public class GoodsController {
     @GetMapping("/{id}")
     public String getById(@PathVariable Integer id, Model model) {
         GoodsEntity goods = service.getById(id);
+        Long price = goods.getPrice();
+        model.addAttribute("price",price);
         model.addAttribute("goods", goods);
        return "edit";
     }
@@ -68,7 +70,7 @@ public class GoodsController {
         Long price = service.getCurrentRent(goodsId).getGoods().getPrice();
         Long time = service.getCurrentRent(goodsId).getTime();
 
-        Double cost = price * time / 60d;
+        Long cost = price * time;
         model.addAttribute("time", stringTime);
         model.addAttribute("cost", cost);
         return "rent";
