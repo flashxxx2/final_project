@@ -30,6 +30,10 @@ public class GoodsController {
     public String getById(@PathVariable Integer id, Model model) {
         GoodsEntity goods = service.getById(id);
         Long price = goods.getPrice();
+        RentEntity rentEntity=service.getCurrentRent(id);
+        boolean hasCurrentRent= rentEntity !=null;
+
+        model.addAttribute("hasCurrentRent",hasCurrentRent);
         model.addAttribute("price",price);
         model.addAttribute("goods", goods);
        return "edit";
@@ -73,6 +77,7 @@ public class GoodsController {
         Long cost = price * time;
         model.addAttribute("time", stringTime);
         model.addAttribute("cost", cost);
+        model.addAttribute("goodsId",goodsId);
         return "rent";
 
     }

@@ -34,7 +34,8 @@ public class GoodsService {
         this.rentRepository = rentRepository;
         this.uploadPath = Path.of(URI.create(uploadPath)).resolve("media");
     }
-        public List<GoodsEntity> getAll() {
+
+    public List<GoodsEntity> getAll() {
         return goodsRepository.findAll();
     }
 
@@ -62,6 +63,11 @@ public class GoodsService {
     }
 
     public RentEntity save(RentDto rentDto) {
+
+        if (getCurrentRent(rentDto.getGoodsId()) != null) {
+           throw new IllegalArgumentException();
+        }
+
         RentEntity rentEntity = new RentEntity();
         Long time = rentDto.getTime();
         LocalDateTime endTime = RentUtil.calculateRentEndTime(time);
@@ -79,7 +85,7 @@ public class GoodsService {
     }
 
     public RentEntity getCurrentRent(Integer goodsId) {
-        List<RentEntity> rentEntityList = rentRepository.getByEndTimeAfterAndGoodsId(LocalDateTime.now(),goodsId);
+        List<RentEntity> rentEntityList = rentRepository.getByEndTimeAfterAndGoodsId(LocalDateTime.now(), goodsId);
         if (rentEntityList.isEmpty())
             return null;
         return rentEntityList.get(0);
