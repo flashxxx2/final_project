@@ -31,8 +31,7 @@ public class GoodsController {
         GoodsEntity goods = service.getById(id);
         Long price = goods.getPrice();
         RentEntity rentEntity=service.getCurrentRent(id);
-        boolean hasCurrentRent= rentEntity !=null;
-
+        boolean hasCurrentRent= rentEntity ==null;
         model.addAttribute("hasCurrentRent",hasCurrentRent);
         model.addAttribute("price",price);
         model.addAttribute("goods", goods);
@@ -69,12 +68,15 @@ public class GoodsController {
         if (service.getCurrentRent(goodsId) == null) {
             return "rent";
         }
+        GoodsEntity goods = service.getById(goodsId);
         LocalDateTime localDateTime = service.getCurrentRent(goodsId).getEndTime();
         String stringTime = localDateTimeToString(localDateTime);
         Long price = service.getCurrentRent(goodsId).getGoods().getPrice();
         Long time = service.getCurrentRent(goodsId).getTime();
-
+        String describe = service.getById(goodsId).getDescribe();
         Long cost = price * time;
+        model.addAttribute("goods", goods);
+        model.addAttribute("describe",describe);
         model.addAttribute("time", stringTime);
         model.addAttribute("cost", cost);
         model.addAttribute("goodsId",goodsId);

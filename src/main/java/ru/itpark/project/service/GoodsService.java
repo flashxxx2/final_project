@@ -8,6 +8,7 @@ import ru.itpark.project.entity.GoodsEntity;
 import ru.itpark.project.entity.GoodsType;
 import ru.itpark.project.entity.RentEntity;
 import ru.itpark.project.exception.ProductNotFoundException;
+import ru.itpark.project.exception.TypeNotFoundException;
 import ru.itpark.project.repository.GoodsRepository;
 import ru.itpark.project.repository.RentRepository;
 import ru.itpark.project.util.RentUtil;
@@ -54,18 +55,24 @@ public class GoodsService {
     }
 
     public List<GoodsEntity> findByName(String name) {
-        return goodsRepository.findAllByNameContainsIgnoreCaseOrderByPriceDesc(name);
+        List<GoodsEntity> result = goodsRepository.findAllByNameContainsIgnoreCaseOrderByPriceDesc(name);
+        return result;
+
+
     }
 
     public List<GoodsEntity> findByType(GoodsType type) {
-        return goodsRepository.findAllByGoodstype(type);
-
-    }
+        List<GoodsEntity> result = goodsRepository.findAllByGoodstype(type);
+        if (result.isEmpty()) {
+            throw new TypeNotFoundException();
+        }
+        return result;
+           }
 
     public RentEntity save(RentDto rentDto) {
 
         if (getCurrentRent(rentDto.getGoodsId()) != null) {
-           throw new IllegalArgumentException();
+            throw new IllegalArgumentException();
         }
 
         RentEntity rentEntity = new RentEntity();

@@ -9,13 +9,16 @@
 </head>
 <body>
 
-Велосипеды и самокаты, которые вы можете арендовать!
-<ul>
-    <li data-th-each="item : ${items}">
+
+<ul data-th-if="${!items.isEmpty()}">
+    Велосипеды и самокаты, которые вы можете арендовать!
+        <li data-th-each="item : ${items}">
         <a data-th-href="@{/{id}(id=${item.id})}">
             [[${item.name}]]
+
         </a>
     </li>
 </ul>
+<h4 data-th-if="${items.isEmpty()}">Товар не найден</h4>
 </body>
 </html>
